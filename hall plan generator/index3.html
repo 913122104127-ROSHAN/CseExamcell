@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Apply Montserrat Font to the Entire Document */
+        body {
+            font-family: "Poppins", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            background-color: #1E90FF; /* Fallback color */
+            color: #333; /* Default text color */
+        }
+        /* General Container Styles */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for contrast */
+            border-radius: 8px; /* Rounded corners for container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for container */
+        }
+        /* Title Styles */
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 700; /* Bold weight */
+        }
+        /* Forms Wrapper to Hold Form 1 and Form 2 */
+        .forms-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        /* Styling for the Forms */
+        form {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px; /* Increased padding for more space */
+            margin-bottom: 20px; /* Space below each form */
+            width: 45%;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+        }
+        /* Add a margin to the Merge Files form */
+        .merge-files-form {
+            margin-bottom: 20px; /* Space before the next form */
+        }
+        /* Form hover effect */
+        form:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+        /* Ensuring Form Fields Do Not Overflow */
+        form input[type="text"],
+        form input[type="file"],
+        form input[type="date"],
+        form select {
+            width: 100%;
+            padding: 10px; /* Increased padding for better usability */
+            margin-bottom: 15px; /* Increased space between inputs */
+            border: 2px solid #1E90FF; /* Matching border color */
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px; /* Consistent font size */
+        }
+        /* Centering and Styling Buttons */
+        input[type="submit"] {
+            background-color: #E5E2A7; /* Updated background color */
+            color: #4B3D3A;
+            border: none;
+            padding: 12px 24px; /* Increased padding for better look */
+            margin: 0 auto;
+            display: block;
+            font-size: 14px; /* Adjusted font size */
+            font-weight: 550; /* Medium weight for buttons */
+            border-radius: 12px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+        }
+        input[type="submit"]:hover {
+            background-color: #95e99e; /* Slightly darker shade for hover effect */
+            box-shadow: 0 6px 12px rgba(150, 254, 103, 0.724); /* Enhanced shadow on hover */
+        }
+        /* Ensuring Responsive Layout for Forms */
+        @media screen and (max-width: 768px) {
+            .forms-wrapper {
+                flex-direction: column;
+            }
+        
+            form {
+                width: 100%;
+            }
+        }
+        /* Centered Forms (for Merge and Attendance forms) */
+        .centered-form {
+            text-align: center;
+            width: 550px;
+            margin: 0 auto;
+        }
+        /* Improving Label and Input Field Layout */
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500; /* Medium weight */
+        }
+        /* Reducing Font Size for Compact Layout */
+        form h2 {
+            font-size: 20px;
+            font-weight: 500; /* Medium weight */
+        }
+        /* Smaller Font Sizes for Inputs */
+        form label, form input, form select {
+            font-size: 14px;
+        }
+        /* Styling for the Attendance Form Container */
+        .attendance-form-container {
+            margin-top: 22px; /* Space above the attendance form */
+            width: 70%; /* Width of the container */
+            margin-left: auto; /* Center the container */
+            margin-right: auto; /* Center the container */
+        }
+        /* Centered Forms */
+        .centered-form {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 20px; /* Padding inside the form */
+            box-sizing: border-box; /* Ensures padding and border don't increase width */
+        }
+        html {
+            background: 
+                linear-gradient(135deg, rgba(30, 144, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 100%),
+                linear-gradient(-135deg, rgba(30, 144, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 100%);
+            background-color: #1E90FF; /* Fallback color */
+            background-blend-mode: overlay;
+            background-size: 200% 200%;
+            animation: backgroundAnimation 15s ease infinite;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+        /* Background Animation for Dynamic Effect */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        input[type="file"] {
+            padding: 8px 15px; /* Smaller padding for a more compact button */
+            background-color: #f0f0f0;
+            color: #333;
+            border: 2px solid #1E90FF; /* Border color set to #1E90FF */
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-size: 14px; /* Slightly smaller font size */
+            outline: none; /* Removes the default focus outline */
+        }
+        input[type="file"]:hover {
+            background-color: #e0e0e0;
+            border-color: #0d6efd; /* Darker shade for hover */
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #1E90FF; /* Set the background to #1E90FF */
+            color: white;
+            padding: 8px 15px; /* Smaller padding for a compact button */
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px; /* Slightly smaller font size */
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #0d6efd; /* Darker blue on hover */
+        }
+        input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #edebb6; /* Your website color */
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+            cursor: pointer;
+            width: 200px;
+        }
+        /* Hover and focus effects */
+        input[type="date"]:hover {
+            border-color: #94acd1; /* Slightly darker shade */
+        }
+        input[type="date"]:focus {
+            outline: none;
+            border-color: #0d6efd; /* Blue border on focus */
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%; /* Full width on smaller screens */
+            }
+            .forms-wrapper {
+                flex-direction: column; /* Stack forms vertically */
+            }
+            form {
+                width: 100%; /* Full width for forms */
+            }
+        }
+        /* Button Styles */
+        input[type="submit"] {
+            background-color: #4682B4; /* Steel Blue */
+            color: #ffffff; /* White text color */
+            border: none;
+            padding: 12px 24px; /* Increased padding for better look */
+            margin: 0 auto;
+            display: block;
+            font-size: 14px; /* Adjusted font size */
+            font-weight: 550; /* Medium weight for buttons */
+            border-radius: 12px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
+        }
+        input[type="submit"]:hover {
+            background-color: #5A9BD5; /* Lighter shade for hover effect */
+            box-shadow: 0 6px 12px rgba(103, 209, 254, 0.724); /* Enhanced shadow on hover */
+        }
+        /* Update File Input Button Styles */
+        input[type="file"]::file-selector-button {
+            background-color: #4682B4; /* Steel Blue for file input button */
+            color: white;
+            padding: 8px 15px; /* Smaller padding for a compact button */
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px; /* Slightly smaller font size */
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #5A9BD5; /* Lighter shade on hover */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Allocation System</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Hall Allocation System</h1>
+        <!-- Wrapper for First and Second Form (Side by Side) -->
+        <div class="forms-wrapper">
+        <!-- First Form -->
+            <form id="form1" action="allocate.php" method="post" enctype="multipart/form-data">
+            <h2>Allocate Halls For Set1</h2>
+            <label for="examTitle">Exam Title:</label>
+            <input type="text" name="examTitle" id="examTitle" placeholder="IAT 1" required>
+            <label for="secondYearLabel">Year:</label>
+            <select id="secondYearLabel" name="secondYearLabel" required>
+                <option value="I">I</option>
+                <option value="II" selected>II</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+            </select>
+            <label for="thirdYearLabel">Year:</label>
+            <select id="thirdYearLabel" name="thirdYearLabel" required>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III" selected>III</option>
+                <option value="IV">IV</option>
+            </select>
+            <label for="examDate">Exam Date:</label>
+            <input type="date" name="examDate" id="examDate" required>
+            <!-- Grid Layout for File Uploads and Hall Information -->
+        <div class="grid-container">
+            <div>
+                <label for="secondYearFile">Upload First Input File:</label>
+                <input type="file" name="secondYearFile" id="secondYearFile" accept=".xlsx" required>
+            </div>
+            <div>
+                <label for="thirdYearFile">Upload Second Input File:</label>
+                <input type="file" name="thirdYearFile" id="thirdYearFile" accept=".xlsx" required>
+            </div>
+            <div>
+                <label for="hallNames">Enter Hall Names (comma-separated):</label>
+                <input type="text" name="hallNames" id="hallNames" placeholder="F1,F2,F3,F4,F5" required>
+            </div>
+            <div>
+                <label for="hallCapacities">Enter Hall Capacities (comma-separated):</label>
+                <input type="text" name="hallCapacities" id="hallCapacities" placeholder="32,30,32,34,30" required>
+            </div>
+        </div>
+        <input type="submit" value="Allocate Halls">
+            </form> 
+        <!-- Second Form -->
+        <form id="form2" action="allocate.php" method="post" enctype="multipart/form-data">
+            <h2>Allocate Halls For Set2</h2>
+            <input type="hidden" name="examTitle" id="examTitleCopy">
+            <label for="secondYearLabel2">Year:</label>
+            <select id="secondYearLabel2" name="secondYearLabel" required>
+                <option value="I">I</option>
+                <option value="II" selected>II</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+            </select>
+            <label for="thirdYearLabel2">Year:</label>
+            <select id="thirdYearLabel2" name="thirdYearLabel" required>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III" selected>III</option>
+                <option value="IV">IV</option>
+            </select>
+        <input type="hidden" name="examDate" id="examDateCopy">
+        <label for="secondYearFile2">Upload First Input File:</label>
+        <input type="file" name="secondYearFile" id="secondYearFile2" accept=".xlsx" required>
+        <label for="thirdYearFile2">Upload Second Input File:</label>
+        <input type="file" name="thirdYearFile" id="thirdYearFile2" accept=".xlsx" required>
+        <label for="hallNames2">Enter Hall Names (comma-separated):</label>
+        <input type="text" name="hallNames" id="hallNames2" placeholder="F1,F2,F3,F4,F5" required>
+        <label for="hallCapacities2">Enter Hall Capacities (comma-separated):</label>
+        <input type="text" name="hallCapacities" id="hallCapacities2" placeholder="32,30,32,34,30" required>
+        <input type="submit" value="Allocate Halls">
+    </form>
+</div>
+<!-- Wrapper for Third and Fourth Form (Side by Side) -->
+<div class="forms-wrapper">
+    <!-- Third Form -->
+    <form id="form3" action="allocate.php" method="post" enctype="multipart/form-data">
+        <h2>Allocate Halls For Set3</h2>
+        <input type="hidden" name="examTitle" id="examTitleCopy">
+        <label for="secondYearLabel3">Year:</label>
+        <select id="secondYearLabel3" name="secondYearLabel" required>
+            <option value="I">I</option>
+            <option value="II" selected>II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+        </select>
+        <label for="thirdYearLabel3">Year:</label>
+        <select id="thirdYearLabel3" name="thirdYearLabel" required>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III" selected>III</option>
+            <option value="IV">IV</option>
+        </select>
+        <input type="hidden" name="examDate" id="examDateCopy">
+        <label for="secondYearFile3">Upload First Input File:</label>
+        <input type="file" name="secondYearFile" id="secondYearFile3" accept=".xlsx" required>
+        <label for="thirdYearFile3">Upload Second Input File:</label>
+        <input type="file" name="thirdYearFile" id="thirdYearFile3" accept=".xlsx" required>
+        <label for="hallNames3">Enter Hall Names (comma-separated):</label>
+        <input type="text" name="hallNames" id="hallNames3" placeholder="F1,F2,F3,F4,F5" required>
+        <label for="hallCapacities3">Enter Hall Capacities (comma-separated):</label>
+        <input type="text" name="hallCapacities" id="hallCapacities3" placeholder="32,30,32,34,30" required>
+        <input type="submit" value="Allocate Halls">
+    </form>
+    <!-- Fourth Form (to Merge Files) -->
+    <form action="merge3.php" method="post" enctype="multipart/form-data">
+        <h2>Merge Files</h2>
+        <label for="file1">Upload Set1 Excel File:</label>
+        <input type="file" name="file1" id="file1" accept=".xlsx" required><br>
+        <label for="file2">Upload Set2 Excel File:</label>
+        <input type="file" name="file2" id="file2" accept=".xlsx" required><br>
+        <label for="file3">Upload Set3 Excel File:</label>
+        <input type="file" name="file3" id="file3" accept=".xlsx" required><br>
+        <input type="submit" value="Merge Files">
+    </form>
+</div>
+        <!-- Form for Attendance Sheet Generation -->
+      <!-- Wrapper Div for Attendance Sheet Generation Form -->
+<div class="attendance-form-container">
+    <form class="centered-form" action="generate_attendance.php" method="post" enctype="multipart/form-data">
+        <h2>Generate Attendance Sheet</h2>
+        <label for="allocationFile">Upload Hall Plan:</label>
+        <input type="file" name="allocationFile" id="allocationFile" accept=".xlsx" required><br>
+        <input type="submit" value="Generate Attendance Sheet">
+    </form>
+</div>
+    </div>
+    <!-- JavaScript to synchronize the values from Form 1 to Form 2 -->
+    <script>
+        function copyValues() {
+            document.getElementById('examTitleCopy').value = document.getElementById('examTitle').value;
+
+            document.getElementById('examDateCopy').value = document.getElementById('examDate').value;
+        }
+        document.getElementById('form1').addEventListener('input', copyValues);
+        copyValues();
+    </script>
+</body>
+</html>

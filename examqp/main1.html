@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Word Document</title>
+    <style>
+        /* Background Styling */
+        html {
+            background: 
+                linear-gradient(135deg, rgba(30, 144, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 100%),
+                linear-gradient(-135deg, rgba(30, 144, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 25%, rgba(0, 191, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 50%, rgba(30, 144, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 75%, rgba(0, 191, 255, 0.6) 100%);
+            background-color: #1E90FF; /* Fallback color */
+            background-blend-mode: overlay;
+            background-size: 200% 200%;
+            animation: backgroundAnimation 15s ease infinite;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+        /* Background Animation for Dynamic Effect */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        form {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+            padding: 8px 15px; /* Smaller padding for a more compact button */
+            background-color: #f0f0f0;
+            color: #333;
+            border: 2px solid #2F80EC; /* Border color set to #2F80EC */
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-size: 14px; /* Slightly smaller font size */
+            outline: none; /* Removes the default focus outline */
+        }
+        input[type="file"]:hover {
+            background-color: #e0e0e0;
+            border-color: #1C5BB3; /* Darker shade for hover */
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #00BFFF; /* Set the background to Deep Sky Blue */
+            color: white;
+            padding: 8px 15px; /* Smaller padding for a compact button */
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px; /* Slightly smaller font size */
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #0080FF; /* Darker shade on hover */
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4682B4; /* Steel Blue */
+            color: white; /* Change text color for better contrast */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #4169E1; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <form action="upload1.php" method="post" enctype="multipart/form-data">
+        <h2>Upload QB (With Part C)</h2>
+        <input type="file" name="wordFile" accept=".docx">
+        <br>
+        <input type="submit" value="Convert">
+    </form>
+</body>
+</html>
